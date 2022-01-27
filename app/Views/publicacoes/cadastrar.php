@@ -7,7 +7,7 @@
 </nav>    
 <div class="card">
     <div class="card-body text-dark bg-light">    
-    <div class="card-header text-white bg-success"> <h2>Cadastrar Post</h2></div>
+    <div class="card-header text-white bg-success"> <h2>Cadastrar Publicacão</h2></div>
   
             <form name="cadastrar" method="POST" action="<?= URL?>/publicacoes/cadastrar">
                 <div class="mb-3">
@@ -16,9 +16,22 @@
                 </div>  
                 <div class="mb-3">  
                     <label for="descricao" class="form-label"> Descricao: </label>
-                    <textarea name="descricao" id="descricao"  class="form-control" placeholder="descricao"> <?= $dados['descricao']?> </textarea>
+                    <textarea name="descricao" id="descricao"  class="form-control" placeholder="descricao">  </textarea>
                 </div>  
-               
+                <div class="mb-3">  
+                    <label for="conteudo" class="form-label"> Conteudo: </label>
+                    <textarea name="conteudo" id="conteudo"  class="form-control" placeholder="conteudo">  </textarea>
+                </div>    
+                <div class="mb-3">  
+                    <label for="imagem" class="form-label"> Link imagem: </label>
+                    <input type="text" name="imagem" id="imagem"  class="form-control" placeholder=" cole aqui link imagem">
+                </div>   
+                <div class="mb-3">  
+                    <label for="categoria" class="form-label"> Categoria Publicao: </label>
+                    <select  name="categoria" id="categoria"  class="form-control" placeholder="categoria">  
+                        <option value="1">1</option>
+                    </select >
+                </div>                                           
                 <div class="row">
                     <div class="col">
                         <input type="submit" value="Cadastrar" class="btn bg-info">                        

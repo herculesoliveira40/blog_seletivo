@@ -9,7 +9,7 @@
         <div class="card-header bg-info">
             Postagens
             <a class="btn btn-warning float-right" href="<?=URL?>/posts/cadastrar">
-                    Cadastrar Livro
+                    Cadastrar Post
             </a>
         </div>
                    
@@ -21,7 +21,7 @@
                 <p class="card-text-justify"> <?= $dados['post']->texto?> </p>
             </div>
             <div class="card-footer text-muted">
-                <small> <strong> <?= "Autor:" . $dados['usuario']->nome . "Em: " . date("d/m/Y h:m ", strtotime($dados['post']->criado_em)) . "<br> Tamanho: ". strlen($dados['post']->texto) ?> </strong></small>
+                <small> <strong> <?= "Escrito por:" . $dados['usuario']->nome . "Em: " . date("d/m/Y h:m ", strtotime($dados['post']->criado_em)) . "<br> Tamanho: ". strlen($dados['post']->texto) ?> </strong></small>
             </div>
             <?php if ($dados['post']->usuario_id == $_SESSION['usuario_id']) : ?>
                 <a class="btn btn-primary" href="<?= URL.'/posts/editar/'.$dados['post']->id?>"> Editar </a>

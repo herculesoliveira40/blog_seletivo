@@ -19,10 +19,12 @@
 
 
         public function armazenar($dados) {
-            $this->db_publicacao->query("INSERT INTO publicacoes(autor, titulo, descricao, categoria) VALUES (:autor, :titulo, :descricao, :categoria)");
+            $this->db_publicacao->query("INSERT INTO publicacoes(titulo, descricao, conteudo, imagem, categoria, autor) VALUES (:titulo, :descricao, :conteudo, :imagem, :categoria, :autor)");
 
             $this->db_publicacao->bind("titulo", $dados['titulo']);
             $this->db_publicacao->bind("descricao", $dados['descricao']);
+            $this->db_publicacao->bind("conteudo", $dados['conteudo']);
+            $this->db_publicacao->bind("imagem", $dados['imagem']);
             $this->db_publicacao->bind("autor", $dados['autor']);
             $this->db_publicacao->bind("categoria", $dados['categoria']);
 
@@ -34,10 +36,13 @@
         }
 
         public function atualizar($dados) {
-            $this->db_publicacao->query("UPDATE publicacoes SET titulo = :titulo, descricao = :descricao, categoria = :categoria WHERE id = :id");
+            $this->db_publicacao->query("UPDATE publicacoes SET titulo = :titulo, descricao = :descricao, conteudo = :conteudo, imagem = :imagem, categoria = :categoria WHERE id = :id");
 
             $this->db_publicacao->bind("id", $dados['id']);
             $this->db_publicacao->bind("titulo", $dados['titulo']);
+            $this->db_publicacao->bind("descricao", $dados['descricao']);
+            $this->db_publicacao->bind("conteudo", $dados['conteudo']);
+            $this->db_publicacao->bind("imagem", $dados['imagem']);
             $this->db_publicacao->bind("categoria", $dados['categoria']);
 
             if($this->db_publicacao->executa()):

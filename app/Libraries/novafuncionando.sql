@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `blog`.`livros` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `titulo` VARCHAR(255) NOT NULL,
   `descricao` VARCHAR(2000) NOT NULL,
-  `autor` INT(11) NOT NULL,
+  `autor` VARCHAR(255) NOT NULL,
   `data_de_publicacao` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `categoria` INT(11) NOT NULL,
   PRIMARY KEY (`id`),
@@ -42,11 +42,6 @@ CREATE TABLE IF NOT EXISTS `blog`.`livros` (
   CONSTRAINT `categoria_livro`
     FOREIGN KEY (`categoria`)
     REFERENCES `blog`.`categorias_livros` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `autor_livro`
-    FOREIGN KEY (`autor`)
-    REFERENCES `blog`.`usuarios` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -97,4 +92,4 @@ INSERT INTO `blog`.`categorias_publicacoes` (`id`, `nome`) VALUES ('1', 'AmorP')
 INSERT INTO `blog`.`categorias_publicacoes` (`id`, `nome`) VALUES ('2', 'BiografiaP');
 INSERT INTO `blog`.`categorias_livros` (`id`, `nome`) VALUES ('1', 'AmorL');
 INSERT INTO `blog`.`categorias_livros` (`id`, `nome`) VALUES ('2', 'BiografiaL');
-INSERT INTO `blog`.`usuarios` (`cpf`, `nome`, `email`, `senha`) VALUES ('123.456.789-01', 'user1', 'user1@mail.com', 'user1');
+INSERT INTO `blog`.`usuarios` (`cpf`, `nome`, `email`, `senha`) VALUES ('123.456.789-01', 'user1', 'u1@mail.com', 'u1');
