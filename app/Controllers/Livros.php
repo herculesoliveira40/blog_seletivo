@@ -29,8 +29,10 @@
                     $dados = [
                         'titulo' =>trim($formulario['titulo']),
                         'descricao' =>trim($formulario['descricao']),
-                        'categoria' =>trim($formulario['categoria']),
                         'autor' => trim($formulario['autor']),
+                        'data_de_publicacao' => trim($formulario['data_de_publicacao']),
+                        'categoria' =>trim($formulario['categoria']),
+                        
                     ];
                 
                 if($this->livroModel->armazenar($dados)):
@@ -47,8 +49,10 @@
                     $dados = [
                         'titulo' => '',
                         'descricao' => '',
-                        'categoria' => '',
                         'autor' => '',
+                        'data_de_publicacao' => '',
+                        'categoria' => '',
+                        
                     ];      
                                     
             endif;
