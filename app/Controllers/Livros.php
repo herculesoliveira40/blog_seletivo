@@ -8,19 +8,17 @@
         //         Url::redirecionar('usuarios/login?login_para_ver_livros');
         //     endif;   
             
-             $this->postModel = $this->model('Post');
+             $this->livroModel = $this->model('Livro');
              $this->usuarioModel = $this->model('Usuario');
 
-// Fazer livrosmodelsssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
          }
 
 
         public function index() {
             $dados = [
-                'publicacoes'=>$this->postModel->exibirPublicacoes(), // Livossssssssssssssssssssss
+                'livros'=>$this->livroModel->exibirLivros(),
             ];
             $this->view('livros/index', $dados);
-// Apaga esses dadosssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
         }
 
 
@@ -30,13 +28,16 @@
             if(isset($formulario)):
                     $dados = [
                         'titulo' =>trim($formulario['titulo']),
-                        'texto' =>trim($formulario['texto']),
-                        'usuario_id' => $_SESSION['usuario_id'],
+                        'descricao' =>trim($formulario['descricao']),
+                        'conteudo' =>trim($formulario['conteudo']),
+                        'imagem' =>trim($formulario['imagem']),
+                        'categoria' =>trim($formulario['categoria']),
+                        'autor' => trim($formulario['autor']),
                     ];
                 
-                if($this->postModel->armazenar($dados)):
-                    Sessao::mensagem('post', ' Post Cadastrado com sucesso', 'alert alert-success'); //echo " <br> <h1> Cadastrado com sucesso </h1>";
-                    Url::redirecionar('publicacoes?sucesso'); 
+                if($this->livroModel->armazenar($dados)):
+                    Sessao::mensagem('publicacao', ' Publicacao Cadastrada com sucesso', 'alert alert-success'); //echo " <br> <h1> Cadastrado com sucesso </h1>";
+                    Url::redirecionar('livros?sucesso'); 
                 else:
                     die("Erro ao cadastrar ");                
 
@@ -47,8 +48,11 @@
                 else:
                     $dados = [
                         'titulo' => '',
-                        'texto' => '',
-                        'usuario_id' => '',
+                        'descricao' => '',
+                        'conteudo' => '',
+                        'imagem' => '',
+                        'categoria' => '',
+                        'autor' => '',
                     ];      
                                     
             endif;
@@ -66,12 +70,17 @@
                     $dados = [
                         'id' => $id,
                         'titulo' =>trim($formulario['titulo']),
-                        'texto' =>trim($formulario['texto'])
+                        'descricao' =>trim($formulario['descricao']),
+                        'conteudo' =>trim($formulario['conteudo']),
+                        'imagem' =>trim($formulario['imagem']),
+                        'descricao' =>trim($formulario['descricao']),
+                        'categoria' =>trim($formulario['categoria']),
+
                     ];
                 
-                    if($this->postModel->atualizar($dados)):
-                        Sessao::mensagem('post', ' Post Atualizado com sucesso', 'alert alert-success'); //echo " <br> <h1> Cadastrado com sucesso </h1>";
-                        Url::redirecionar('publicacoes?sucesso'); 
+                    if($this->livroModel->atualizar($dados)):
+                        Sessao::mensagem('publicacao', ' publicacao Atualizado com sucesso', 'alert alert-success'); //echo " <br> <h1> Cadastrado com sucesso </h1>";
+                        Url::redirecionar('livros?sucesso'); 
                     else:
                         die("Erro ao Atualizar ");                
 
@@ -80,65 +89,68 @@
 
 
             else:
-                $post = $this->postModel->postId($id);
+                $publicacao = $this->livroModel->publicacaoId($id);
 
-                if($post->usuario_id != $_SESSION['usuario_id']):
-                    Sessao::mensagem('post', ' Você não criou o post, então pode editar :/ ', 'alert alert-danger'); //echo " <br> <h1> Cadastrado com sucesso </h1>";
-                    Url::redirecionar('publicacoes?nao_pode_editar');                     
+                if($publicacao->usuario_id != $_SESSION['usuario_id']):
+                    Sessao::mensagem('publicacao', ' Você não criou o publicacao, então pode editar :/ ', 'alert alert-danger'); //echo " <br> <h1> Cadastrado com sucesso </h1>";
+                    Url::redirecionar('livros?nao_pode_editar');                     
                 endif;
 
                 $dados = [
-                    'id' => $post->id,
-                    'titulo' => $post->titulo,
-                    'texto' => $post->texto,
+                    'id' => $publicacao->id,
+                    'descricao' => $publicacao->descricao,
+                    'conteudo' => $publicacao->conteudo,
+                    'imagem' => $publicacao->imagem,
+                    'descricao' => $publicacao->descricao,
+                    'categoria' => $publicacao->categoria,
                 ];      
                                     
             endif;
 
 
-            $this->view('publicacoes/editar', $dados);
+            $this->view('livros/editar', $dados);
         }
 
 
         public function ler($id) {
-            $post = $this->postModel->postId($id);
-            $usuario = $this->usuarioModel->postUsuarioId($post->usuario_id);
+            $publicacao = $this->livroModel->publicacaoId($id);
+            $autor = $this->usuarioModel->publicacaoUsuarioId($publicacao->autor);
 
             $dados = [
-                'post' => $post,
-                'usuario' => $usuario,
+                'publicacao' => $publicacao,
+                'autor' => $autor,
             ];
-            $this->view('publicacoes/ler', $dados);           
+            $this->view('livros/ler', $dados);           
         }   
 
 
         public function lerTitulo($titulo) {
            // $titulo = str_replace(' ', '-', $titulo);
-            $post = $this->postModel->postTitulo($titulo);
-            $usuario = $this->usuarioModel->postUsuarioId($post->usuario_id);
+            $publicacao = $this->livroModel->publicacaoTitulo($titulo);
+            $usuario = $this->usuarioModel->publicacaoUsuarioId($publicacao->autor);
 
             $dados = [
-                'post' => $post,
-                'usuario' => $usuario
+                'publicacao' => $publicacao,
+                'autor' => $usuario
             ];
-            $this->view('publicacoes/ler', $dados); //lerTitulo/ titulo
+            $this->view('livros/ler', $dados); //lerTitulo/ titulo
         }
 
 
         public function deletar($id) {
             $id = (int)$id;
-            $post = $this->postModel->postId($id);
-            if(is_int($id) && ($post->usuario_id == $_SESSION['usuario_id'])): 
+            $publicacao = $this->livroModel->publicacaoId($id);
+            if(is_int($id) && ($publicacao->usuario_id == $_SESSION['usuario_id'])): 
 
-                    if($this->postModel->apagar($id)):
-                        Sessao::mensagem('post', ' Post deletado com sucesso', 'alert alert-success'); //echo " <br> <h1> Cadastrado com sucesso </h1>";
-                        Url::redirecionar('publicacoes?deletado'); 
+                    if($this->livroModel->apagar($id)):
+                        Sessao::mensagem('publicacao', ' publicacao deletado com sucesso', 'alert alert-success'); //echo " <br> <h1> Cadastrado com sucesso </h1>";
+                        Url::redirecionar('livros?deletado'); 
                     else:
                         echo "Error ao deletar";
                     endif;    
                 else:
-                    Sessao::mensagem('post', ' Error Você não criou o post, então pode deletar :/ ', 'alert alert-danger'); //echo " <br> <h1> Cadastrado com sucesso </h1>";
-                    Url::redirecionar('publicacoes?nao_pode_apagar'); 
+                    Sessao::mensagem('publicacao', ' Error Você não criou o publicacao, então pode deletar :/ ', 'alert alert-danger'); //echo " <br> <h1> Cadastrado com sucesso </h1>";
+                    Url::redirecionar('livros?nao_pode_apagar'); 
             endif;
         }
 

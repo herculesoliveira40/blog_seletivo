@@ -19,7 +19,7 @@
         ];  
 
           try {
-              $this->conpdo = new PDO($dns, $this->username, $this->password, $opcoes); // echo "Connected $this->servername em $this->database";
+              $this->conpdo = new PDO($dns, $this->username, $this->password, $opcoes);  echo "Connected $this->servername em $this->database";
     
               } catch (PDOException $e) {
                 echo "Error Database: " . $e->getMessage() . "<hr>";

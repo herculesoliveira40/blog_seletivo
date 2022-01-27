@@ -28,8 +28,11 @@
             if(isset($formulario)):
                     $dados = [
                         'titulo' =>trim($formulario['titulo']),
-                        'texto' =>trim($formulario['texto']),
-                        'usuario_id' => $_SESSION['usuario_id'],
+                        'descricao' =>trim($formulario['descricao']),
+                        'conteudo' =>trim($formulario['conteudo']),
+                        'imagem' =>trim($formulario['imagem']),
+                        'categoria' =>trim($formulario['categoria']),
+                        'autor' => $_SESSION['usuario_id'],
                     ];
                 
                 if($this->publicacaoModel->armazenar($dados)):
@@ -45,8 +48,11 @@
                 else:
                     $dados = [
                         'titulo' => '',
-                        'texto' => '',
-                        'usuario_id' => '',
+                        'descricao' => '',
+                        'conteudo' => '',
+                        'imagem' => '',
+                        'categoria' => '',
+                        'autor' => '',
                     ];      
                                     
             endif;
@@ -64,7 +70,12 @@
                     $dados = [
                         'id' => $id,
                         'titulo' =>trim($formulario['titulo']),
-                        'texto' =>trim($formulario['texto'])
+                        'descricao' =>trim($formulario['descricao']),
+                        'conteudo' =>trim($formulario['conteudo']),
+                        'imagem' =>trim($formulario['imagem']),
+                        'descricao' =>trim($formulario['descricao']),
+                        'categoria' =>trim($formulario['categoria']),
+
                     ];
                 
                     if($this->publicacaoModel->atualizar($dados)):
@@ -87,8 +98,11 @@
 
                 $dados = [
                     'id' => $publicacao->id,
-                    'titulo' => $publicacao->titulo,
-                    'texto' => $publicacao->texto,
+                    'descricao' => $publicacao->descricao,
+                    'conteudo' => $publicacao->conteudo,
+                    'imagem' => $publicacao->imagem,
+                    'descricao' => $publicacao->descricao,
+                    'categoria' => $publicacao->categoria,
                 ];      
                                     
             endif;
@@ -100,11 +114,11 @@
 
         public function ler($id) {
             $publicacao = $this->publicacaoModel->publicacaoId($id);
-            $usuario = $this->usuarioModel->publicacaoUsuarioId($publicacao->usuario_id);
+            $autor = $this->usuarioModel->publicacaoUsuarioId($publicacao->autor);
 
             $dados = [
                 'publicacao' => $publicacao,
-                'usuario' => $usuario,
+                'autor' => $autor,
             ];
             $this->view('publicacoes/ler', $dados);           
         }   
@@ -113,11 +127,11 @@
         public function lerTitulo($titulo) {
            // $titulo = str_replace(' ', '-', $titulo);
             $publicacao = $this->publicacaoModel->publicacaoTitulo($titulo);
-            $usuario = $this->usuarioModel->publicacaoUsuarioId($publicacao->usuario_id);
+            $usuario = $this->usuarioModel->publicacaoUsuarioId($publicacao->autor);
 
             $dados = [
                 'publicacao' => $publicacao,
-                'usuario' => $usuario
+                'autor' => $usuario
             ];
             $this->view('publicacoes/ler', $dados); //lerTitulo/ titulo
         }

@@ -41,7 +41,7 @@
         }
 
 
-        public function postUsuarioId($id) {
+        public function publicacaoUsuarioId($id) {
             $this->db_usuario->query("SELECT * FROM usuarios Where id = :id");
             $this->db_usuario->bind('id', $id);
 

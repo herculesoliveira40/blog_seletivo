@@ -26,35 +26,28 @@ CREATE table livros(
     id int  primary key auto_increment,
     titulo varchar(255),
     descricao varchar(2000),
-    autor int,
-    CONSTRAINT autor_livro,
-    FOREIGN KEY (autor) REFERENCES usuarios(id),
-    data_de_publicacao timestamp DEFAULT CURRENT_TIMESTAMP, 
+    autor varchar(255),
+    data_de_publicacao timestamp DEFAULT CURRENT_TIMESTAMP,
     categoria int not null,
-    CONSTRAINT categoria_livro,
-	FOREIGN KEY (categoria) REFERENCES categorias(id)
+	FOREIGN KEY (categoria) REFERENCES categorias_livros(id)
 );
 
-CREATE table publicacoes_de_blog(
+CREATE table publicacoes(
     id int  primary key auto_increment,
     titulo varchar(255),
 	descricao varchar(2000),
     conteudo varchar(2000),
-    autor int,
-    CONSTRAINT autor_publicacao,
-    FOREIGN KEY (autor) REFERENCES usuarios(id),
     imagem varchar(1000),
 	categoria int not null,
-    CONSTRAINT categoria_publicacao,
-    FOREIGN KEY (categoria) REFERENCES categorias(id)
+    FOREIGN KEY (categoria) REFERENCES categorias_publicacoes(id)
     
 );
 
 INSERT INTO `blog`.`categorias_publicacoes` (`id`, `nome`) VALUES ('1', 'AmorP');
-
 INSERT INTO `blog`.`categorias_publicacoes` (`id`, `nome`) VALUES ('2', 'BiografiaP');
-
-
 INSERT INTO `blog`.`categorias_livros` (`id`, `nome`) VALUES ('1', 'AmorL');
-
 INSERT INTO `blog`.`categorias_livros` (`id`, `nome`) VALUES ('2', 'BiografiaL');
+INSERT INTO `blog`.`usuarios` (`cpf`, `nome`, `email`, `senha`) VALUES ('123.456.789-01', 'user1', 'u1@mail.com', 'u1');
+
+
+

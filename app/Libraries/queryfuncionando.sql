@@ -97,4 +97,4 @@ INSERT INTO `blog`.`categorias_publicacoes` (`id`, `nome`) VALUES ('1', 'AmorP')
 INSERT INTO `blog`.`categorias_publicacoes` (`id`, `nome`) VALUES ('2', 'BiografiaP');
 INSERT INTO `blog`.`categorias_livros` (`id`, `nome`) VALUES ('1', 'AmorL');
 INSERT INTO `blog`.`categorias_livros` (`id`, `nome`) VALUES ('2', 'BiografiaL');
-INSERT INTO `blog`.`usuarios` (`cpf`, `nome`, `email`, `senha`) VALUES ('123.456.789-01', 'user1', 'user1@mail.com', 'user1');
+INSERT INTO `blog`.`usuarios` (`cpf`, `nome`, `email`, `senha`) VALUES ('123.456.789-01', 'user1', 'u1@mail.com', 'u1');

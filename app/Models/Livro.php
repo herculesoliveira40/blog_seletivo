@@ -9,20 +9,20 @@
         }
 
 
-        public function exibirPosts() {
+        public function exibirLivros() {
             $this->db_livro->query("
-                SELECT * ????????????????????????????????????????????????????????????????????????????????
+                SELECT * FROM blog.livros;
             ");
             return $this->db_livro->resultados();
         }
 
-
         public function armazenar($dados) {
-            $this->db_livro->query("INSERT INTO posts(usuario_id, titulo, texto) VALUES (:usuario_id, :titulo, :texto)");
+            $this->db_livro->query("INSERT INTO livros(titulo, descricao, autor, categoria) VALUES (:titulo, :descricao, :autor, :categoria)");
 
             $this->db_livro->bind("titulo", $dados['titulo']);
-            $this->db_livro->bind("texto", $dados['texto']);
-            $this->db_livro->bind("usuario_id", $dados['usuario_id']);
+            $this->db_livro->bind("descricao", $dados['descricao']);
+            $this->db_livro->bind("autor", $dados['autor']);
+            $this->db_livro->bind("categoria", $dados['categoria']);
 
             if($this->db_livro->executa()):
                 return true;
@@ -32,11 +32,13 @@
         }
 
         public function atualizar($dados) {
-            $this->db_livro->query("UPDATE posts SET titulo = :titulo, texto = :texto WHERE id = :id");
+            $this->db_livro->query("UPDATE livros SET titulo = :titulo, descricao = :descricao, categoria = :categoria WHERE id = :id");
 
             $this->db_livro->bind("id", $dados['id']);
             $this->db_livro->bind("titulo", $dados['titulo']);
-            $this->db_livro->bind("texto", $dados['texto']);
+            $this->db_livro->bind("descricao", $dados['descricao']);
+            $this->db_publicacao->bind("categoria", $dados['categoria']);
+
 
             if($this->db_livro->executa()):
                 return true;
@@ -47,7 +49,7 @@
 
 
          public function postId($id) {
-             $this->db_livro->query("SELECT * FROM posts Where id = :id");
+             $this->db_livro->query("SELECT * FROM livros Where id = :id");
              $this->db_livro->bind('id', $id);
 
              return $this->db_livro->resultado();
@@ -55,14 +57,14 @@
 
 
          public function postTitulo($titulo) {
-            $this->db_livro->query("SELECT * FROM posts Where titulo = :titulo");
+            $this->db_livro->query("SELECT * FROM livros Where titulo = :titulo");
             $this->db_livro->bind('titulo', $titulo);
 
             return $this->db_livro->resultado();
         }   
         
         public function apagar($id) {
-            $this->db_livro->query("DELETE FROM posts WHERE id = :id");
+            $this->db_livro->query("DELETE FROM livros WHERE id = :id");
 
             $this->db_livro->bind("id", $id);
 
