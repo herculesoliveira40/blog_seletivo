@@ -29,17 +29,10 @@
                     $dados = [
                         'titulo' =>trim($formulario['titulo']),
                         'descricao' =>trim($formulario['descricao']),
-<<<<<<< HEAD
                         'autor' => trim($formulario['autor']),
                         'data_de_publicacao' => trim($formulario['data_de_publicacao']),
                         'categoria' =>trim($formulario['categoria']),
                         
-=======
-                        'conteudo' =>trim($formulario['conteudo']),
-                        'imagem' =>trim($formulario['imagem']),
-                        'categoria' =>trim($formulario['categoria']),
-                        'autor' => trim($formulario['autor']),
->>>>>>> 5e2ac6082b5ba1400e246b4d134d7b515430441f
                     ];
                 
                 if($this->livroModel->armazenar($dados)):
@@ -56,17 +49,10 @@
                     $dados = [
                         'titulo' => '',
                         'descricao' => '',
-<<<<<<< HEAD
                         'autor' => '',
                         'data_de_publicacao' => '',
                         'categoria' => '',
                         
-=======
-                        'conteudo' => '',
-                        'imagem' => '',
-                        'categoria' => '',
-                        'autor' => '',
->>>>>>> 5e2ac6082b5ba1400e246b4d134d7b515430441f
                     ];      
                                     
             endif;

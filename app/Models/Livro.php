@@ -17,19 +17,12 @@
         }
 
         public function armazenar($dados) {
-<<<<<<< HEAD
             $this->db_livro->query("INSERT INTO livros(titulo, descricao, autor, data_de_publicacao, categoria) VALUES (:titulo, :descricao, :autor, :data_de_publicacao, :categoria)");
-=======
-            $this->db_livro->query("INSERT INTO livros(titulo, descricao, autor, categoria) VALUES (:titulo, :descricao, :autor, :categoria)");
->>>>>>> 5e2ac6082b5ba1400e246b4d134d7b515430441f
 
             $this->db_livro->bind("titulo", $dados['titulo']);
             $this->db_livro->bind("descricao", $dados['descricao']);
             $this->db_livro->bind("autor", $dados['autor']);
-<<<<<<< HEAD
             $this->db_livro->bind("data_de_publicacao", $dados['data_de_publicacao']);
-=======
->>>>>>> 5e2ac6082b5ba1400e246b4d134d7b515430441f
             $this->db_livro->bind("categoria", $dados['categoria']);
 
             if($this->db_livro->executa()):
