@@ -28,10 +28,13 @@
                     <label for="autor" class="form-label"> Autor: </label>
                     <input type="text" name="autor" id="autor"  class="form-control" placeholder="Autor do Livro">
                 </div> 
+<<<<<<< HEAD
                 <div class="mb-3">
                     <label for="data_de_publicacao" class="form-label"> Data de Publicação: </label>
                     <input type="date" name="data_de_publicacao" id="data_de_publicacao"  class="form-control" placeholder="Autor do Livro">
                 </div> 
+=======
+>>>>>>> 5e2ac6082b5ba1400e246b4d134d7b515430441f
                 <div class="row">
                     <div class="col">
                         <input type="submit" value="Cadastrar" class="btn bg-info">                        
