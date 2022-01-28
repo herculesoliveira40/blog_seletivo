@@ -19,7 +19,7 @@
                 <a class="btn btn-outline-info " href="<?=URL?>/livros/ler/<?= $livro->id?>"> Ver Mais... </a> // mudarlivro->id Para livro->livroIddddddddddddddddddddddddddd
             </div>
             <div class="card-footer text-muted">
-                <small> <strong> <?= "Autor: $livro->autor em: " . date("d/m/Y h:m ", strtotime($livro->livroDataCadastro)) . "<br> Tamanho: ". strlen($publicacao->conteudo) ?> </strong></small>
+                <small> <strong> <?= "Autor: $livro->autor Publicado em: " . date("d/m/Y h:m ", strtotime($livro->data_de_publicacao)) . "<br> Tamanho: ". strlen($livro->descricao) ?> </strong></small>
             </div>
             
         </div>

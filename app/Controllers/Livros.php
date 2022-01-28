@@ -36,7 +36,7 @@
                     ];
                 
                 if($this->livroModel->armazenar($dados)):
-                    Sessao::mensagem('publicacao', ' Publicacao Cadastrada com sucesso', 'alert alert-success'); //echo " <br> <h1> Cadastrado com sucesso </h1>";
+                    Sessao::mensagem('livro', ' Livro Cadastrado com sucesso', 'alert alert-success'); //echo " <br> <h1> Cadastrado com sucesso </h1>";
                     Url::redirecionar('livros?sucesso'); 
                 else:
                     die("Erro ao cadastrar ");                
@@ -79,7 +79,7 @@
                     ];
                 
                     if($this->livroModel->atualizar($dados)):
-                        Sessao::mensagem('publicacao', ' publicacao Atualizado com sucesso', 'alert alert-success'); //echo " <br> <h1> Cadastrado com sucesso </h1>";
+                        Sessao::mensagem('livro', ' livro Atualizado com sucesso', 'alert alert-success'); //echo " <br> <h1> Cadastrado com sucesso </h1>";
                         Url::redirecionar('livros?sucesso'); 
                     else:
                         die("Erro ao Atualizar ");                
@@ -89,20 +89,20 @@
 
 
             else:
-                $publicacao = $this->livroModel->publicacaoId($id);
+                $livro = $this->livroModel->livroId($id);
 
-                if($publicacao->usuario_id != $_SESSION['usuario_id']):
-                    Sessao::mensagem('publicacao', ' Você não criou o publicacao, então pode editar :/ ', 'alert alert-danger'); //echo " <br> <h1> Cadastrado com sucesso </h1>";
+                if($livro->usuario_id != $_SESSION['usuario_id']):
+                    Sessao::mensagem('livro', ' Você não criou o livro, então pode editar :/ ', 'alert alert-danger'); //echo " <br> <h1> Cadastrado com sucesso </h1>";
                     Url::redirecionar('livros?nao_pode_editar');                     
                 endif;
 
                 $dados = [
-                    'id' => $publicacao->id,
-                    'descricao' => $publicacao->descricao,
-                    'conteudo' => $publicacao->conteudo,
-                    'imagem' => $publicacao->imagem,
-                    'descricao' => $publicacao->descricao,
-                    'categoria' => $publicacao->categoria,
+                    'id' => $livro->id,
+                    'descricao' => $livro->descricao,
+                    'conteudo' => $livro->conteudo,
+                    'imagem' => $livro->imagem,
+                    'descricao' => $livro->descricao,
+                    'categoria' => $livro->categoria,
                 ];      
                                     
             endif;
@@ -113,11 +113,11 @@
 
 
         public function ler($id) {
-            $publicacao = $this->livroModel->publicacaoId($id);
-            $autor = $this->usuarioModel->publicacaoUsuarioId($publicacao->autor);
+            $livro = $this->livroModel->livroId($id);
+            $autor = $this->usuarioModel->publicacaoUsuarioId($livro->autor);
 
             $dados = [
-                'publicacao' => $publicacao,
+                'livro' => $livro,
                 'autor' => $autor,
             ];
             $this->view('livros/ler', $dados);           
@@ -126,11 +126,11 @@
 
         public function lerTitulo($titulo) {
            // $titulo = str_replace(' ', '-', $titulo);
-            $publicacao = $this->livroModel->publicacaoTitulo($titulo);
-            $usuario = $this->usuarioModel->publicacaoUsuarioId($publicacao->autor);
+            $livro = $this->livroModel->livroTitulo($titulo);
+            $usuario = $this->usuarioModel->publicacaoUsuarioId($livro->autor);
 
             $dados = [
-                'publicacao' => $publicacao,
+                'livro' => $livro,
                 'autor' => $usuario
             ];
             $this->view('livros/ler', $dados); //lerTitulo/ titulo
@@ -139,17 +139,17 @@
 
         public function deletar($id) {
             $id = (int)$id;
-            $publicacao = $this->livroModel->publicacaoId($id);
-            if(is_int($id) && ($publicacao->usuario_id == $_SESSION['usuario_id'])): 
+            $livro = $this->livroModel->livroId($id);
+            if(is_int($id) && ($livro->usuario_id == $_SESSION['usuario_id'])): 
 
                     if($this->livroModel->apagar($id)):
-                        Sessao::mensagem('publicacao', ' publicacao deletado com sucesso', 'alert alert-success'); //echo " <br> <h1> Cadastrado com sucesso </h1>";
+                        Sessao::mensagem('livro', ' livro deletado com sucesso', 'alert alert-success'); //echo " <br> <h1> Cadastrado com sucesso </h1>";
                         Url::redirecionar('livros?deletado'); 
                     else:
                         echo "Error ao deletar";
                     endif;    
                 else:
-                    Sessao::mensagem('publicacao', ' Error Você não criou o publicacao, então pode deletar :/ ', 'alert alert-danger'); //echo " <br> <h1> Cadastrado com sucesso </h1>";
+                    Sessao::mensagem('livro', ' Error Você não criou o livro, então pode deletar :/ ', 'alert alert-danger'); //echo " <br> <h1> Cadastrado com sucesso </h1>";
                     Url::redirecionar('livros?nao_pode_apagar'); 
             endif;
         }

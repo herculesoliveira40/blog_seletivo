@@ -38,7 +38,7 @@
             $this->db_livro->bind("id", $dados['id']);
             $this->db_livro->bind("titulo", $dados['titulo']);
             $this->db_livro->bind("descricao", $dados['descricao']);
-            $this->db_publicacao->bind("categoria", $dados['categoria']);
+            $this->db_livro->bind("categoria", $dados['categoria']);
 
 
             if($this->db_livro->executa()):
@@ -49,7 +49,7 @@
         }
 
 
-         public function postId($id) {
+         public function livroId($id) {
              $this->db_livro->query("SELECT * FROM livros Where id = :id");
              $this->db_livro->bind('id', $id);
 
@@ -57,7 +57,7 @@
          }
 
 
-         public function postTitulo($titulo) {
+         public function livroTitulo($titulo) {
             $this->db_livro->query("SELECT * FROM livros Where titulo = :titulo");
             $this->db_livro->bind('titulo', $titulo);
 
