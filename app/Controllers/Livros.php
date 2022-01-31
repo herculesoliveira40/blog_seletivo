@@ -31,7 +31,10 @@
                         'descricao' =>trim($formulario['descricao']),
                         'autor' => trim($formulario['autor']),
                         'data_de_publicacao' => trim($formulario['data_de_publicacao']),
+                        'paginas' => trim($formulario['paginas']),
                         'categoria' =>trim($formulario['categoria']),
+                        'imagem' =>trim($formulario['imagem']),
+                        'autor_usuario' => $_SESSION['usuario_id'],
                         
                     ];
                 
@@ -51,7 +54,11 @@
                         'descricao' => '',
                         'autor' => '',
                         'data_de_publicacao' => '',
+                        'paginas' => '',
                         'categoria' => '',
+                        'imagem' => '',
+                        'autor_usuario' => '',
+
                         
                     ];      
                                     
@@ -71,10 +78,11 @@
                         'id' => $id,
                         'titulo' =>trim($formulario['titulo']),
                         'descricao' =>trim($formulario['descricao']),
-                        'conteudo' =>trim($formulario['conteudo']),
-                        'imagem' =>trim($formulario['imagem']),
-                        'descricao' =>trim($formulario['descricao']),
+                        'autor' =>trim($formulario['autor']),
+                        'data_de_publicacao' =>trim($formulario['data_de_publicacao']),
+                        'paginas' =>trim($formulario['paginas']),
                         'categoria' =>trim($formulario['categoria']),
+                        'imagem' =>trim($formulario['imagem']),
 
                     ];
                 
@@ -91,17 +99,19 @@
             else:
                 $livro = $this->livroModel->livroId($id);
 
-                if($livro->usuario_id != $_SESSION['usuario_id']):
+                if($livro->autor_usuario != $_SESSION['usuario_id']):
                     Sessao::mensagem('livro', ' Você não criou o livro, então pode editar :/ ', 'alert alert-danger'); //echo " <br> <h1> Cadastrado com sucesso </h1>";
                     Url::redirecionar('livros?nao_pode_editar');                     
                 endif;
 
                 $dados = [
                     'id' => $livro->id,
+                    'titulo' => $livro->titulo,
                     'descricao' => $livro->descricao,
-                    'conteudo' => $livro->conteudo,
+                    'autor' => $livro->autor,
+                    'data_de_publicacao' => $livro->data_de_publicacao,
+                    'paginas' => $livro->paginas,
                     'imagem' => $livro->imagem,
-                    'descricao' => $livro->descricao,
                     'categoria' => $livro->categoria,
                 ];      
                                     
@@ -114,11 +124,11 @@
 
         public function ler($id) {
             $livro = $this->livroModel->livroId($id);
-            $autor = $this->usuarioModel->publicacaoUsuarioId($livro->autor);
+            $usuario = $this->usuarioModel->publicacaoUsuarioId($livro->autor);
 
             $dados = [
                 'livro' => $livro,
-                'autor' => $autor,
+                'autor' => $usuario,
             ];
             $this->view('livros/ler', $dados);           
         }   
@@ -140,7 +150,7 @@
         public function deletar($id) {
             $id = (int)$id;
             $livro = $this->livroModel->livroId($id);
-            if(is_int($id) && ($livro->usuario_id == $_SESSION['usuario_id'])): 
+            if(is_int($id) && ($livro->autor_usuario == $_SESSION['usuario_id'])): 
 
                     if($this->livroModel->apagar($id)):
                         Sessao::mensagem('livro', ' livro deletado com sucesso', 'alert alert-success'); //echo " <br> <h1> Cadastrado com sucesso </h1>";

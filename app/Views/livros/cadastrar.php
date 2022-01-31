@@ -18,19 +18,27 @@
                     <label for="descricao" class="form-label"> Descrição: </label>
                     <textarea name="descricao" id="descricao"  class="form-control">  </textarea>
                 </div>  
-                <div class="mb-3">  
-                    <label for="categoria" class="form-label"> Categoria Livro: </label>
-                    <select  name="categoria" id="categoria"  class="form-control" placeholder="categoria">  
-                        <option value="2">2</option>
-                    </select >
-                </div>
                 <div class="mb-3">
                     <label for="autor" class="form-label"> Autor: </label>
                     <input type="text" name="autor" id="autor"  class="form-control" placeholder="Autor do Livro">
                 </div> 
                 <div class="mb-3">
                     <label for="data_de_publicacao" class="form-label"> Data de Publicação: </label>
-                    <input type="date" name="data_de_publicacao" id="data_de_publicacao"  class="form-control" placeholder="Autor do Livro">
+                    <input type="date" name="data_de_publicacao" id="data_de_publicacao"  class="form-control" placeholder="Data de publicacao Livro">
+                </div> 
+                <div class="mb-3">  
+                    <label for="categoria" class="form-label"> Categoria Livro: </label>
+                    <select  name="categoria" id="categoria"  class="form-control" placeholder="categoria">  
+                        <option value="2">2</option>
+                    </select >
+                </div>
+                <div class="mb-3">  
+                    <label for="paginas" class="form-label"> Quantidade de Paginas: </label>
+                    <input type="number" name="paginas" id="paginas"  class="form-control" placeholder=" Quantidade de Paginas">
+                </div> 
+                <div class="mb-3">  
+                    <label for="imagem" class="form-label"> Link imagem: </label>
+                    <input type="text" name="imagem" id="imagem"  class="form-control" placeholder=" cole aqui link imagem">
                 </div> 
                 <div class="row">
                     <div class="col">

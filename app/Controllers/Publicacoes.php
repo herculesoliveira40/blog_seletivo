@@ -91,13 +91,14 @@
             else:
                 $publicacao = $this->publicacaoModel->publicacaoId($id);
 
-                if($publicacao->usuario_id != $_SESSION['usuario_id']):
+                if($publicacao->autor_usuario != $_SESSION['usuario_id']):
                     Sessao::mensagem('publicacao', ' Você não criou o publicacao, então pode editar :/ ', 'alert alert-danger'); //echo " <br> <h1> Cadastrado com sucesso </h1>";
                     Url::redirecionar('publicacoes?nao_pode_editar');                     
                 endif;
 
                 $dados = [
                     'id' => $publicacao->id,
+                    'titulo' => $publicacao->titulo,
                     'descricao' => $publicacao->descricao,
                     'conteudo' => $publicacao->conteudo,
                     'imagem' => $publicacao->imagem,
@@ -140,7 +141,7 @@
         public function deletar($id) {
             $id = (int)$id;
             $publicacao = $this->publicacaoModel->publicacaoId($id);
-            if(is_int($id) && ($publicacao->usuario_id == $_SESSION['usuario_id'])): 
+            if(is_int($id) && ($publicacao->autor_usuario == $_SESSION['usuario_id'])): 
 
                     if($this->publicacaoModel->apagar($id)):
                         Sessao::mensagem('publicacao', ' publicacao deletado com sucesso', 'alert alert-success'); //echo " <br> <h1> Cadastrado com sucesso </h1>";
