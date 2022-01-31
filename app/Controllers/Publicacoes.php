@@ -115,7 +115,7 @@
 
         public function ler($id) {
             $publicacao = $this->publicacaoModel->publicacaoId($id);
-            $usuario = $this->usuarioModel->publicacaoUsuarioId($publicacao->autor);
+            $usuario = $this->usuarioModel->publicacaoUsuarioId($publicacao->autor_usuario);
 
             $dados = [
                 'publicacao' => $publicacao,
