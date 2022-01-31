@@ -2,7 +2,7 @@
 
 define('APP', dirname(__FILE__));
 
-define('URL', 'http://localhost/blog');
+define('URL', 'http://localhost/blog_seletivo');
 
 
 ?>
