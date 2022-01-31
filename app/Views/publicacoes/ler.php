@@ -23,7 +23,7 @@
             <div class="card-footer text-muted">
                 <small> <strong> <?= "Autor:" . $dados['usuario']->nome . "Em: " . date("d/m/Y h:m ", strtotime($dados['publicacao']->criado_em)) . "<br> Tamanho: ". strlen($dados['publicacao']->texto) ?> </strong></small>
             </div>
-            <?php if ($dados['publicacao']->autor == $_SESSION['usuario_id']) : ?>
+            <?php if ($dados['publicacao']->autor_usuario == $_SESSION['usuario_id']) : ?>
                 <a class="btn btn-primary" href="<?= URL.'/publicacoes/editar/'.$dados['publicacao']->id?>"> Editar </a>
                 <form action="<?= URL.'/publicacoes/deletar/'.$dados['publicacao']->id?>" method="publicacao">
                     <input type="submit" class="btn bg-danger" value="deletar">
