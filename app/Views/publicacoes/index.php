@@ -16,6 +16,7 @@
             </div>
             <div class="card-body">
                 <p class="card-text-justify"> <?= $publicacao->descricao?> </p>
+                <img src="<?=$publicacao->imagem?>" alt="<?=$publicacao->imagem?>" height="80px" width="80px" >
                 <a class="btn btn-outline-info " href="<?=URL?>/publicacoes/ler/<?= $publicacao->id?>"> Ver Mais... </a> // mudarpublicacao->id Para publicacao->publicacaoIddddddddddddddddddddddddddd
             </div>
             <div class="card-footer text-muted">

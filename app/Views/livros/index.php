@@ -16,6 +16,7 @@
             </div>
             <div class="card-body">
                 <p class="card-text-justify"> <?= $livro->descricao?> </p>
+                <img src="<?=$livro->imagem?>" alt="<?=$livro->imagem?>" height="80px" width="80px" >
                 <a class="btn btn-outline-info " href="<?=URL?>/livros/ler/<?= $livro->id?>"> Ver Mais... </a> // mudarlivro->id Para livro->livroIddddddddddddddddddddddddddd
             </div>
             <div class="card-footer text-muted">

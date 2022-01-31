@@ -19,6 +19,8 @@
             </div>
             <div class="card-body">
                 <p class="card-text-justify"> <?= $dados['livro']->descricao?> </p>
+                <img src="<?=$dados['livro']->imagem?>" alt="<?=$dados['livro']->imagem?>">
+
             </div>
             <div class="card-footer text-muted">
                 <small> <strong> <?= "Autor: " . $dados['livro']->autor . " Publicado Em: " . date("d/m/Y h:m ", strtotime($dados['livro']->data_de_publicacao)) . "<br> Tamanho: ". strlen($dados['livro']->descricao) ?> </strong></small>
