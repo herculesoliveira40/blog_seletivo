@@ -32,6 +32,7 @@
         public function atualizar($dados) {
             $this->db_categoria_publicao->query("UPDATE categorias_publicacoes SET nome = :nome WHERE id = :id");
 
+            $this->db_categoria_publicao->bind("id", $dados['id']);
             $this->db_categoria_publicao->bind("nome", $dados['nome']);
 
 

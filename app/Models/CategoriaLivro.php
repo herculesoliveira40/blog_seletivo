@@ -32,6 +32,7 @@
         public function atualizar($dados) {
             $this->db_categoria_livro->query("UPDATE categorias_livros SET nome = :nome WHERE id = :id");
 
+            $this->db_categoria_livro->bind("id", $dados['id']);
             $this->db_categoria_livro->bind("nome", $dados['nome']);
 
 
@@ -42,7 +43,7 @@
             endif;                                
         }
 
-
+        
         
         public function apagar($id) {
             $this->db_categoria_livro->query("DELETE FROM categorias_livros WHERE id = :id");

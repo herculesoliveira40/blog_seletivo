@@ -63,56 +63,41 @@
                 if(isset($formulario)):
                         $dados = [
                             'id' => $id,
-                            'titulo' =>trim($formulario['titulo']),
-                            'texto' =>trim($formulario['texto'])
+                            'nome' =>trim($formulario['nome']),
                         ];
                     
                         if($this->categoriaPublicacaoModel->atualizar($dados)):
-                            Sessao::mensagem('post', ' Post Atualizado com sucesso', 'alert alert-success'); //echo " <br> <h1> Cadastrado com sucesso </h1>";
-                            Url::redirecionar('posts?sucesso'); 
+                            Sessao::mensagem('categorias_publicacoes', ' categoriaspublicacoes Atualizado com sucesso', 'alert alert-success'); //echo " <br> <h1> Cadastrado com sucesso </h1>";
+                            Url::redirecionar('categoriaspublicacoes?sucesso'); 
                         else:
                             die("Erro ao Atualizar ");                
     
                         endif;                
     
-    
-    
-                else:
-                    $post = $this->categoriaPublicacaoModel->postId($id);
-    
-                    if($post->usuario_id != $_SESSION['usuario_id']):
-                        Sessao::mensagem('post', ' Você não criou o post, então pode editar :/ ', 'alert alert-danger'); //echo " <br> <h1> Cadastrado com sucesso </h1>";
-                        Url::redirecionar('posts?nao_pode_editar');                     
+                    else:
+                        
+                                            
                     endif;
     
-                    $dados = [
-                        'id' => $post->id,
-                        'titulo' => $post->titulo,
-                        'texto' => $post->texto,
-                    ];      
-                                        
-                endif;
     
-    
-                $this->view('posts/editar', $dados);
+                $this->view('categoriaslivros/editar', $dados);
             }
-    
+
     
     
             public function deletar($id) {
                 $id = (int)$id;
-                $post = $this->categoriaPublicacaoModel->postId($id);
-                if(is_int($id) && ($post->usuario_id == $_SESSION['usuario_id'])): 
+                if(is_int($id) && Sessao::estaLogado()): 
     
                         if($this->categoriaPublicacaoModel->apagar($id)):
-                            Sessao::mensagem('post', ' Post deletado com sucesso', 'alert alert-success'); //echo " <br> <h1> Cadastrado com sucesso </h1>";
-                            Url::redirecionar('posts?deletado'); 
+                            Sessao::mensagem('categorias_publicacoes', ' categoriaspublicacoes deletado com sucesso', 'alert alert-success'); //echo " <br> <h1> Cadastrado com sucesso </h1>";
+                            Url::redirecionar('categoriaspublicacoes?deletado'); 
                         else:
                             echo "Error ao deletar";
                         endif;    
                     else:
-                        Sessao::mensagem('post', ' Error Você não criou o post, então pode deletar :/ ', 'alert alert-danger'); //echo " <br> <h1> Cadastrado com sucesso </h1>";
-                        Url::redirecionar('posts?nao_pode_apagar'); 
+                        Sessao::mensagem('categoriaspublicacoes', ' Error Você não criou o categoriaspublicacoes, então pode deletar :/ ', 'alert alert-danger'); //echo " <br> <h1> Cadastrado com sucesso </h1>";
+                        Url::redirecionar('categoriaspublicacoes?nao_pode_apagar'); 
                 endif;
             }
     

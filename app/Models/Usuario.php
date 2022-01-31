@@ -8,6 +8,14 @@
             $this->db_usuario = new Conexao();
         }
 
+        public function exibirUsuarios() {
+            $this->db_usuario->query("
+            SELECT * FROM blog.usuarios;
+             
+            ");
+            return $this->db_usuario->resultados();
+        }
+
         public function armazenar($dados) {
             $this->db_usuario->query("INSERT INTO usuarios(cpf, nome, email, senha) VALUES (:cpf, :nome, :email, :senha)");
 

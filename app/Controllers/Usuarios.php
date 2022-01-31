@@ -8,6 +8,14 @@
         }
 
 
+        public function index() {
+            $dados = [
+                'usuarios'=>$this->usuarioModel->exibirUsuarios(),
+            ];
+            $this->view('usuarios/index', $dados);
+        }
+
+        
         public function cadastrar() {
 
             $formulario = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
