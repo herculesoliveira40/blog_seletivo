@@ -4,6 +4,7 @@
 
 
         public function __construct() {
+            
             $this->usuarioModel = $this->model('Usuario');
         }
 

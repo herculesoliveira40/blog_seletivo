@@ -4,9 +4,9 @@
 
 
         public function __construct() {
-        //     if(!Sessao::estaLogado()) :
-        //         Url::redirecionar('usuarios/login?login_para_ver_livros');
-        //     endif;   
+            if(!Sessao::estaLogado()) :
+                Url::redirecionar('usuarios/login?login_para_ver_livros');
+            endif;   
             
 
              $this->categoriaLivroModel = $this->model('CategoriaLivro');

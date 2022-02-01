@@ -21,9 +21,9 @@
             </div>
             <div class="card-body">
                 <p class="card-text-justify">  <?= $categoria_livro->nome ?> </p> 
-                <div style="display: flex">           
+                <div style="display: flex;justify-content: space-around">           
                         <?php if(Sessao::estaLogado()) : ?>
-                                <a class="btn btn-primary" href="<?= URL.'/categoriaslivros/editar/'.$categoria_livro->id?>"> Editar </a>
+                                <a class="btn btn-success" href="<?= URL.'/categoriaslivros/editar/'.$categoria_livro->id?>"> Editar </a>
                                 <form action="<?= URL.'/categoriaslivros/deletar/'.$categoria_livro->id?>" method="POST">
                                     <input type="submit" class="btn bg-danger" value="deletar">
                                 </form>

@@ -4,12 +4,10 @@
 
 
         public function __construct() {
-            //     if(!Sessao::estaLogado()) :
-            //         Url::redirecionar('usuarios/login?login_para_ver_publicacoes');
-            //     endif;   
+                if(!Sessao::estaLogado()) :
+                    Url::redirecionar('usuarios/login?login_para_ver_publicacoes');
+                endif;   
                 
-                 $this->publicacaoModel = $this->model('Publicacao');
-                 $this->usuarioModel = $this->model('Usuario');
                  $this->categoriaPublicacaoModel = $this->model('CategoriaPublicacao');
                  
     
@@ -18,10 +16,10 @@
     
             public function index() {
                 $dados = [
-                    'categorias_publicacoes'=>$this->categoriaPublicacaoModel->exibirCategoriasPublicacoes(), // Categoriassssssssssssssssssssssssssssssssssssssssssss
+                    'categorias_publicacoes'=>$this->categoriaPublicacaoModel->exibirCategoriasPublicacoes(), 
                 ];
                 $this->view('categoriaspublicacoes/index', $dados);
-    // Apaga esses dadosssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+
             }
     
     
