@@ -6,23 +6,23 @@
             <form name="cadastrar" method="POST" action="<?= URL?>/usuarios/cadastrar">
             <div class="mb-3">
                     <label for="cpf" class="form-label"> CPF: </label>
-                    <input type="text" name="cpf" id="cpf"  class="form-control" onkeypress="$(this).mask('000.000.000-00')">
+                    <input type="text" name="cpf" id="cpf"  class="form-control" onkeypress="$(this).mask('000.000.000-00')" required>
                 </div>            
                 <div class="mb-3">
                     <label for="nome" class="form-label"> Nome: </label>
-                    <input type="text" name="nome" id="nome"  class="form-control" placeholder="Your name">
+                    <input type="text" name="nome" id="nome"  class="form-control" placeholder="Your name" required>
                 </div>  
                 <div class="mb-3">  
                     <label for="email" class="form-label"> Email: </label>
-                    <input type="email" name="email" id="email"  class="form-control" placeholder="name@example.com">
+                    <input type="email" name="email" id="email"  class="form-control" placeholder="name@example.com" required>
                 </div>  
                 <div class="mb-3">
                     <label for="senha" class="form-label"> Senha: </label>
-                    <input type="password" name="senha" id="senha"  class="form-control" placeholder="">
+                    <input type="password" name="senha" id="senha"  class="form-control" placeholder="" required>
                 </div>  
                 <div class="mb-3">
                     <label for="confirmar_senha" class="form-label"> Confirmar Senha: </label>
-                    <input type="password" name="confirmar_senha" id="confirmar_senha" class="form-control"placeholder="">
+                    <input type="password" name="confirmar_senha" id="confirmar_senha" class="form-control"placeholder="" required>
                 </div>   
 
                 <div class="row">
