@@ -1,8 +1,8 @@
 <div class="col-md-6 mx-auto p-5">
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="<?= URL?>/publicacoes"> Publicacao </a></li>
-    <li class="breadcrumb-item active" aria-current="page"> Editar Publicacao</li>
+    <li class="breadcrumb-item"><a href="<?= URL?>/publicacoes"> Publicacões </a></li>
+    <li class="breadcrumb-item active" aria-current="page"> Editar Publicacao: <?= $dados['titulo']?></li>
   </ol>
 </nav>   
 <div class="card">

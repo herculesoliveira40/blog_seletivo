@@ -44,6 +44,13 @@
         }
 
 
+        public function categoriaPublicacaoId($id) {
+            $this->db_categoria_publicao->query("SELECT * FROM categorias_livros Where id = :id");
+            $this->db_categoria_publicao->bind('id', $id);
+
+            return $this->db_categoria_publicao->resultado();
+        } 
+
         
         public function apagar($id) {
             $this->db_categoria_publicao->query("DELETE FROM categorias_publicacoes WHERE id = :id");

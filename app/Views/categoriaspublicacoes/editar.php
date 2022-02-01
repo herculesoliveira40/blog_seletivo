@@ -3,7 +3,7 @@
     <div class="card-body text-dark bg-light">    
     <div class="card-header text-white bg-success"> <h2>Editar Categoria Publicações</h2></div>
   
-            <form name="cadastrar" method="POST" action="<?= URL?>/categoriaspublicacoes/editar">
+            <form name="cadastrar" method="POST" action="<?= URL?>/categoriaspublicacoes/editar/<?= $dados['id']?>">
                 <div class="mb-3">
                     <label for="nome" class="form-label"> Editar Categoria Publicação: </label>
                     <input type="text" name="nome" id="nome"  class="form-control">

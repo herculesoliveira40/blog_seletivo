@@ -43,7 +43,12 @@
             endif;                                
         }
 
-        
+        public function categoriaLivroId($id) {
+            $this->db_categoria_livro->query("SELECT * FROM categorias_livros Where id = :id");
+            $this->db_categoria_livro->bind('id', $id);
+
+            return $this->db_categoria_livro->resultado();
+        }        
         
         public function apagar($id) {
             $this->db_categoria_livro->query("DELETE FROM categorias_livros WHERE id = :id");

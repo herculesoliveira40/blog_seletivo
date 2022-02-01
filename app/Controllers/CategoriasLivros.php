@@ -8,8 +8,7 @@
         //         Url::redirecionar('usuarios/login?login_para_ver_livros');
         //     endif;   
             
-             $this->publicacaoModel = $this->model('Publicacao');
-             $this->usuarioModel = $this->model('Usuario');
+
              $this->categoriaLivroModel = $this->model('CategoriaLivro');
              
 
@@ -18,10 +17,9 @@
 
         public function index() {
             $dados = [
-                'categorias_livros'=>$this->categoriaLivroModel->exibirCategoriasLivros(), // Categoriassssssssssssssssssssssssssssssssssssssssssss
+                'categorias_livros'=>$this->categoriaLivroModel->exibirCategoriasLivros(), 
             ];
             $this->view('categoriaslivros/index', $dados);
-// Apaga esses dadosssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
         }
 
 
@@ -41,8 +39,6 @@
                     die("Erro ao cadastrar ");                
 
                 endif;                
-
-
 
                 else:
                     $dados = [
@@ -75,7 +71,11 @@
                     endif;                
 
                 else:
-                    
+                    $categorias_livros = $this->categoriaLivroModel->categoriaLivroId($id);
+                    $dados = [
+                        'id' => $categorias_livros->id,
+                        'nome' => $categorias_livros->nome,
+                    ];
                                         
                 endif;
 

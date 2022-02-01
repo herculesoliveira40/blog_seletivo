@@ -2,7 +2,7 @@
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="<?= URL?>/livros"> Livros </a></li>
-    <li class="breadcrumb-item active" aria-current="page"> Editar Livro</li>
+    <li class="breadcrumb-item active" aria-current="page"> Editar Livro: <?= $dados['titulo']?></li>
   </ol>
 </nav>   
 <div class="card">

@@ -57,7 +57,7 @@
     
     
             public function editar($id) {
-    
+
                 $formulario = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
     
                 if(isset($formulario)):
@@ -75,12 +75,16 @@
                         endif;                
     
                     else:
-                        
+                        $categorias_publicacoes = $this->categoriaPublicacaoModel->categoriaPublicacaoId($id);
+                        $dados = [
+                            'id' => $categorias_publicacoes->id,
+                            'nome' => $categorias_publicacoes->nome,
+                        ];
                                             
                     endif;
     
     
-                $this->view('categoriaslivros/editar', $dados);
+                $this->view('categoriaspublicacoes/editar', $dados);
             }
 
     
