@@ -1,1 +1,1 @@
-<h1> <?php echo  $dados['tituloPagina'] ;?> </h1>
+<h1> <?php echo  $dados['texto'] ;?> </h1>

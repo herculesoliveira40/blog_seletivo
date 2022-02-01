@@ -20,18 +20,19 @@
                 <h3> <?= $categoria_livro->id ?> </h3>
             </div>
             <div class="card-body">
-                <p class="card-text-justify">  <?= $categoria_livro->nome ?> </p>
-               
+                <p class="card-text-justify">  <?= $categoria_livro->nome ?> </p> 
+                <div style="display: flex">           
+                        <?php if(Sessao::estaLogado()) : ?>
+                                <a class="btn btn-primary" href="<?= URL.'/categoriaslivros/editar/'.$categoria_livro->id?>"> Editar </a>
+                                <form action="<?= URL.'/categoriaslivros/deletar/'.$categoria_livro->id?>" method="POST">
+                                    <input type="submit" class="btn bg-danger" value="deletar">
+                                </form>
+                        <?php endif; ?>    
+                </div>            
             </div>
+           
         </div>
-        <div class="card-footer text-muted">           
-        <?php if(Sessao::estaLogado()) : ?>
-                <a class="btn btn-primary" href="<?= URL.'/categoriaslivros/editar/'.$categoria_livro->id?>"> Editar </a>
-                <form action="<?= URL.'/categoriaslivros/deletar/'.$categoria_livro->id?>" method="POST">
-                    <input type="submit" class="btn bg-danger" value="deletar">
-                </form>
-            <?php endif; ?>    
-        </div>
+
 <?php  
     endforeach; 
 ?> 
@@ -41,4 +42,3 @@
 
 
 
-  

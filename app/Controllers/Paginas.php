@@ -9,7 +9,7 @@
             // endif; 
 
             $dados = [
-                'tituloPagina' => 'Pagina Inicial'
+                'texto' => 'Pagina Inicial Teste Seletivo PHP JR'
             ];
 
             $this->view('paginas/home', $dados);           
@@ -17,7 +17,7 @@
 
         public function sobre() {
             $dados = [
-                'tituloPagina' => 'Pagina Sobre'
+                'texto' => 'Pagina Sobre'
             ];
 
             $this->view('paginas/sobre');
