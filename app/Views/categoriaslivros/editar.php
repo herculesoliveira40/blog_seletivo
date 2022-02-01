@@ -6,7 +6,7 @@
             <form name="cadastrar" method="POST" action="<?= URL?>/categoriaslivros/editar/<?= $dados['id']?>">
                 <div class="mb-3">
                     <label for="nome" class="form-label"> Editar Categoria Livro: </label>
-                    <input type="text" name="nome" id="nome"  class="form-control" required>
+                    <input type="text" name="nome" id="nome"  class="form-control" value="<?= $dados['nome']?>" required>
                 </div>  
                
                 <div class="row">
