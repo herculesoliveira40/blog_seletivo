@@ -6,7 +6,7 @@
             <form name="cadastrar" method="POST" action="<?= URL?>/categoriaslivros/cadastrar">
                 <div class="mb-3">
                     <label for="nome" class="form-label"> Nome Categoria Livro: </label>
-                    <input type="text" name="nome" id="nome"  class="form-control" placeholder="categoria livro">
+                    <input type="text" name="nome" id="nome"  class="form-control" placeholder="categoria livro" required>
                 </div>  
                
                 <div class="row">

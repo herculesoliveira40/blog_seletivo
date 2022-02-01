@@ -38,6 +38,7 @@
                 
 
                 if($this->usuarioModel->armazenar($dados)):
+                    Sessao::mensagem('usuarios', ' Usuario Cadastrado com sucesso', 'alert alert-success'); 
                     Url::redirecionar('usuarios/login?sucesso'); 
                 else:
                     die("Erro ao cadastrar ");                

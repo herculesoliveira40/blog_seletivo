@@ -1,4 +1,5 @@
 <div class="col-xl-4 col-md-6 mx-auto p-5">
+<?= Sessao::mensagem('usuarios'); ?> <!--  Invoca mensagemmmmmmmmmmmmmmmmmmmmmmmm -->
 <div class="card">
     <div class="card-body text-dark bg-light">    
     <div class="card-header text-white bg-success"> <h2>Login</h2></div>

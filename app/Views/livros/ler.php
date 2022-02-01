@@ -25,7 +25,7 @@
             <div class="card-footer text-muted">
                 <small> <strong> <?= "Autor: " . $dados['livro']->autor . " <br> Publicado Em: " . date("d/m/Y h:m ", strtotime($dados['livro']->data_de_publicacao)) . "<br> Quantidade de Paginas: ". ($dados['livro']->paginas) . "<br> Tamanho Descrição Letras: ". strlen($dados['livro']->descricao) ?> </strong></small>
             </div>
-            <?php if ($dados['livro']->autor_usuario == $_SESSION['usuario_id']) : ?>
+            <?php if (Sessao::estaLogado() && $dados['livro']->autor_usuario == $_SESSION['usuario_id']) : ?>
                 <a class="btn btn-primary" href="<?= URL.'/livros/editar/'.$dados['livro']->id?>"> Editar </a>
                 <form action="<?= URL.'/livro/deletar/'.$dados['livro']->id?>" method="POST">
                     <input type="submit" class="btn bg-danger" value="deletar">

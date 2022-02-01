@@ -12,7 +12,7 @@
             <form name="cadastrar" method="POST" action="<?= URL?>/publicacoes/cadastrar">
                 <div class="mb-3">
                     <label for="titulo" class="form-label"> Titulo: </label>
-                    <input type="text" name="titulo" id="titulo"  class="form-control" placeholder="titulo">
+                    <input type="text" name="titulo" id="titulo"  class="form-control" placeholder="titulo" required>
                 </div>  
                 <div class="mb-3">  
                     <label for="descricao" class="form-label"> Descricao: </label>
@@ -24,13 +24,16 @@
                 </div>    
                 <div class="mb-3">  
                     <label for="imagem" class="form-label"> Link imagem: </label>
-                    <input type="text" name="imagem" id="imagem"  class="form-control" placeholder=" cole aqui link imagem">
+                    <input type="text" name="imagem" id="imagem"  class="form-control" placeholder=" cole aqui link imagem" required>
                 </div>   
                 <div class="mb-3">  
                     <label for="categoria" class="form-label"> Categoria Publicao: </label>
-                    <select  name="categoria" id="categoria"  class="form-control" placeholder="categoria">  
-                        <option value="1">1</option>
-                    </select >
+
+                        <select  name="categoria" id="categoria"  class="form-control" placeholder="categoria">  
+                            <?php foreach ($dados['categorias_livros'] as $categoria_livro): ?>
+                                <option value="<?=$categoria_livro->id?>"><?=$categoria_livro->nome?></option>
+                            <?php endforeach; ?>
+                        </select >
                 </div>                                           
                 <div class="row">
                     <div class="col">

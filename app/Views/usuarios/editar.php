@@ -23,11 +23,11 @@
                     <input type="email" name="email" id="email"  class="form-control" value="<?= $dados['email']?>" >
                 </div>  
                 <div class="mb-3">
-                    <label for="senha" class="form-label"> Senha: </label>
+                    <label for="senha" class="form-label"> Senha Atual: </label>
                     <input type="password" name="senha" id="senha"  class="form-control" placeholder="">
                 </div>  
                 <div class="mb-3">
-                    <label for="confirmar_senha" class="form-label"> Confirmar Senha: </label>
+                    <label for="confirmar_senha" class="form-label"> Senha Nova: </label>
                     <input type="password" name="confirmar_senha" id="confirmar_senha" class="form-control"placeholder="">
                 </div>   
 

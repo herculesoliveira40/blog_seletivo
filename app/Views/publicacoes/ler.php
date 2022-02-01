@@ -22,9 +22,9 @@
                 <img src="<?=$dados['publicacao']->imagem?>" alt="<?=$dados['publicacao']->imagem?>" height="720px" width="580">
             </div>
             <div class="card-footer text-muted">
-                <small> <strong> <?= "Autor da Publicação: " . $dados['publicacao']->autor_usuario . ", Em: " . date("d/m/Y h:m ", strtotime($dados['publicacao']->data_de_publicacao)) . "<br> Quantidade de letras: ". strlen($dados['publicacao']->conteudo) ?> </strong></small>
+                <small> <strong> <?= "Publicação Em: " . date("d/m/Y h:m ", strtotime($dados['publicacao']->data_de_publicacao)) . "<br> Quantidade de letras: ". strlen($dados['publicacao']->conteudo) ?> </strong></small>
             </div>
-            <?php if ($dados['publicacao']->autor_usuario == $_SESSION['usuario_id']) : ?>
+            <?php if (Sessao::estaLogado() && $dados['publicacao']->autor_usuario == $_SESSION['usuario_id']) : ?>
                 <a class="btn btn-primary" href="<?= URL.'/publicacoes/editar/'.$dados['publicacao']->id?>"> Editar </a>
                 <form action="<?= URL.'/publicacoes/deletar/'.$dados['publicacao']->id?>" method="publicacao">
                     <input type="submit" class="btn bg-danger" value="deletar">

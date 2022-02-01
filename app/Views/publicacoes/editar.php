@@ -12,7 +12,7 @@
             <form name="cadastrar" method="POST" action="<?= URL?>/publicacoes/editar/<?= $dados['id']?>">
                 <div class="mb-3">
                     <label for="titulo" class="form-label"> Titulo: </label>
-                    <input type="text" name="titulo" id="titulo"  class="form-control" value="<?= $dados['titulo']?>" >
+                    <input type="text" name="titulo" id="titulo"  class="form-control" value="<?= $dados['titulo']?>" required >
                 </div>  
                 <div class="mb-3">  
                     <label for="descricao" class="form-label"> Descricao: </label>
@@ -24,7 +24,7 @@
                 </div>  
                 <div class="mb-3">  
                     <label for="imagem" class="form-label"> Link imagem: </label>
-                    <input type="text" name="imagem" id="imagem"  class="form-control" value="<?= $dados['imagem']?>" >
+                    <input type="text" name="imagem" id="imagem"  class="form-control" value="<?= $dados['imagem']?>" required >
                 </div> 
                 <div class="mb-3">  
                     <label for="categoria" class="form-label"> Categoria Publicao: </label>

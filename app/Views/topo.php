@@ -44,7 +44,7 @@
             </ul>
 
         </div>
-        <div >           
+                <div >           
                     <?php    
                         if(isset($_SESSION['usuario_id'])):
                             echo 'Olá: ' . $_SESSION['usuario_nome']; 
