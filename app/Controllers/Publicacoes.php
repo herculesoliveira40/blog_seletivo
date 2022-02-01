@@ -4,10 +4,7 @@
 
 
         public function __construct() {
-        //     if(!Sessao::estaLogado()) :
-        //         Url::redirecionar('usuarios/login?login_para_ver_publicacoes');
-        //     endif;   
-            
+           
              $this->publicacaoModel = $this->model('Publicacao');
              $this->usuarioModel = $this->model('Usuario');
 
@@ -23,6 +20,10 @@
 
 
         public function cadastrar() {
+
+            if(!Sessao::estaLogado()) :
+                Url::redirecionar('usuarios/login?login_para_cadastrar_publicacoes');
+            endif; 
 
             $formulario = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
             if(isset($formulario)):
