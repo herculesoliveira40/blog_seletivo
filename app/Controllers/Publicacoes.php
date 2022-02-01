@@ -1,13 +1,15 @@
 <?php
 
     Class Publicacoes extends Controller {
-
+        private $data;
 
         public function __construct() {
            
              $this->publicacaoModel = $this->model('Publicacao');
              $this->usuarioModel = $this->model('Usuario');
-
+             $this->categoriaPublicacaoModel = $this->model('CategoriaPublicacao');
+             $this->data['categorias_publicacoes'] = $this->categoriaPublicacaoModel->exibirCategoriasPublicacoes(); 
+             
          }
 
 
@@ -26,6 +28,7 @@
             endif; 
 
             $formulario = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+            
             if(isset($formulario)):
                     $dados = [
                         'titulo' =>trim($formulario['titulo']),
@@ -58,8 +61,9 @@
                                     
             endif;
 
+            $this->data['dados'] = $dados; 
 
-            $this->view('publicacoes/cadastrar', $dados);
+            $this->view('publicacoes/cadastrar', $this->data);
         }
 
 

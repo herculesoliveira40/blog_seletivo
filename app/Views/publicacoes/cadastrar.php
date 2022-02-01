@@ -27,11 +27,12 @@
                     <input type="text" name="imagem" id="imagem"  class="form-control" placeholder=" cole aqui link imagem" required>
                 </div>   
                 <div class="mb-3">  
-                    <label for="categoria" class="form-label"> Categoria Publicao: </label>
+                    <label for="categoria" class="form-label"> Categoria Publicação: </label>
 
                         <select  name="categoria" id="categoria"  class="form-control" placeholder="categoria">  
-                            <?php foreach ($dados['categorias_livros'] as $categoria_livro): ?>
-                                <option value="<?=$categoria_livro->id?>"><?=$categoria_livro->nome?></option>
+                            <?php foreach ($dados['categorias_publicacoes'] as $categoria_publicacao): ?>
+                                            <?php var_dump($dados['categorias_publicacoes']) ?>
+                                <option value="<?=$categoria_publicacao->id?>"> <?=$categoria_publicacao->nome?> </option>
                             <?php endforeach; ?>
                         </select >
                 </div>                                           

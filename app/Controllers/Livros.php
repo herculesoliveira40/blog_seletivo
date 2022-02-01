@@ -8,6 +8,8 @@
             
              $this->livroModel = $this->model('Livro');
              $this->usuarioModel = $this->model('Usuario');
+             $this->categoriaLivroModel = $this->model('CategoriaLivro');
+             $this->data['categorias_livros'] = $this->categoriaLivroModel->exibirCategoriasLivros();
 
          }
 
@@ -66,8 +68,9 @@
                                     
             endif;
 
+            $this->data['dados'] = $dados; 
 
-            $this->view('livros/cadastrar', $dados);
+            $this->view('livros/cadastrar', $this->data);
         }
 
 

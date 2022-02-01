@@ -28,9 +28,12 @@
                 </div> 
                 <div class="mb-3">  
                     <label for="categoria" class="form-label"> Categoria Livro: </label>
-                    <select  name="categoria" id="categoria"  class="form-control" placeholder="categoria">  
-                        <option value="2">2</option>
-                    </select >
+                        <select  name="categoria" id="categoria"  class="form-control" placeholder="categoria">  
+                                <?php foreach ($dados['categorias_livros'] as $categoria_livro): ?>
+                                                <?php var_dump($dados['categorias_livros']) ?>
+                                    <option value="<?=$categoria_livro->id?>"> <?=$categoria_livro->nome?> </option>
+                                <?php endforeach; ?>
+                        </select >
                 </div>
                 <div class="mb-3">  
                     <label for="paginas" class="form-label"> Quantidade de Paginas: </label>
