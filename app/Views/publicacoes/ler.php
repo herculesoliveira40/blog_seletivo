@@ -19,10 +19,10 @@
             </div>
             <div class="card-body">
                 <p class="card-text-justify"> <?= $dados['publicacao']->descricao?> </p>
-                <img src="<?=$dados['publicacao']->imagem?>" alt="<?=$dados['publicacao']->imagem?>">
+                <img src="<?=$dados['publicacao']->imagem?>" alt="<?=$dados['publicacao']->imagem?>" height="720px" width="580">
             </div>
             <div class="card-footer text-muted">
-                <small> <strong> <?= "Autor:" . $dados['usuario']->nome . "Em: " . date("d/m/Y h:m ", strtotime($dados['publicacao']->criado_em)) . "<br> Tamanho: ". strlen($dados['publicacao']->texto) ?> </strong></small>
+                <small> <strong> <?= "Autor da Publicação: " . $dados['publicacao']->autor_usuario . ", Em: " . date("d/m/Y h:m ", strtotime($dados['publicacao']->data_de_publicacao)) . "<br> Quantidade de letras: ". strlen($dados['publicacao']->conteudo) ?> </strong></small>
             </div>
             <?php if ($dados['publicacao']->autor_usuario == $_SESSION['usuario_id']) : ?>
                 <a class="btn btn-primary" href="<?= URL.'/publicacoes/editar/'.$dados['publicacao']->id?>"> Editar </a>

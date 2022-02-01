@@ -5,7 +5,7 @@
 
         public function __construct() {
                 if(!Sessao::estaLogado()) :
-                    Url::redirecionar('usuarios/login?login_para_ver_publicacoes');
+                    Url::redirecionar('usuarios/login?login_para_ver_categoriaspublicacoes');
                 endif;   
                 
                  $this->categoriaPublicacaoModel = $this->model('CategoriaPublicacao');
@@ -33,7 +33,7 @@
                         ];
                     
                     if($this->categoriaPublicacaoModel->armazenar($dados)):
-                        Sessao::mensagem('post', ' Categoria Paublicacao Cadastrado com sucesso', 'alert alert-success');
+                        Sessao::mensagem('post', ' Categoria Publicacao Cadastrado com sucesso', 'alert alert-success');
                         Url::redirecionar('categoriaspublicacoes?sucesso'); 
                     else:
                         die("Erro ao cadastrar ");                

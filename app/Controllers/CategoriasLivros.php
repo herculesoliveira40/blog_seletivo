@@ -5,7 +5,7 @@
 
         public function __construct() {
             if(!Sessao::estaLogado()) :
-                Url::redirecionar('usuarios/login?login_para_ver_livros');
+                Url::redirecionar('usuarios/login?login_para_ver_categoriaslivros');
             endif;   
             
 

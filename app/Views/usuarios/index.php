@@ -20,8 +20,10 @@
             <div class="card-body">
                 <p class="card-text-justify">  <?= $usuario->email ?> </p> 
                 <div style="display: flex;justify-content: space-around">  
-                    <a class="btn btn-success" href="<?= URL.'/usuarios/editar/'.$usuario->id?>"> Editar </a>
+                    
                     <?php if($usuario->id == $_SESSION['usuario_id']): ?>
+                        <a class="btn btn-success" href="<?= URL.'/usuarios/editar/'.$usuario->id?>"> Editar </a>
+
                             <form action="<?= URL.'/usuarios/deletar/'.$usuario->id?>" method="POST">
                                 <input type="submit" class="btn bg-danger" value="deletar">
                             </form>

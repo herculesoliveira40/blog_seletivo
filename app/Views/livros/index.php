@@ -17,10 +17,10 @@
             <div class="card-body">
                 <p class="card-text-justify"> <?= $livro->descricao?> </p>
                 <img src="<?=$livro->imagem?>" alt="<?=$livro->imagem?>" height="80px" width="80px" >
-                <a class="btn btn-outline-info " href="<?=URL?>/livros/ler/<?= $livro->id?>"> Ver Mais... </a> // mudarlivro->id Para livro->livroIddddddddddddddddddddddddddd
+                <a class="btn btn-outline-info " href="<?=URL?>/livros/ler/<?= $livro->id?>"> Ver Mais... </a> 
             </div>
             <div class="card-footer text-muted">
-                <small> <strong> <?= "Autor: $livro->autor Publicado em: " . date("d/m/Y h:m ", strtotime($livro->data_de_publicacao)) . "<br> Tamanho: ". strlen($livro->descricao) ?> </strong></small>
+                <small> <strong> <?= "Autor: $livro->autor" . "<br> Publicado em: " . date("d/m/Y h:m ", strtotime($livro->data_de_publicacao)) . "<br> Quantidade de Paginas: ". ($livro->paginas)  ?> </strong></small>
             </div>
             
         </div>

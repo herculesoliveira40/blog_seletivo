@@ -17,10 +17,10 @@
             <div class="card-body">
                 <p class="card-text-justify"> <?= $publicacao->descricao?> </p>
                 <img src="<?=$publicacao->imagem?>" alt="<?=$publicacao->imagem?>" height="80px" width="80px" >
-                <a class="btn btn-outline-info " href="<?=URL?>/publicacoes/ler/<?= $publicacao->id?>"> Ver Mais... </a> // mudarpublicacao->id Para publicacao->publicacaoIddddddddddddddddddddddddddd
+                <a class="btn btn-outline-info " href="<?=URL?>/publicacoes/ler/<?= $publicacao->id?>"> Ver Mais... </a> 
             </div>
             <div class="card-footer text-muted">
-                <small> <strong> <?= "Autor: $publicacao->autor em: " . date("d/m/Y h:m ", strtotime($publicacao->publicacaoDataCadastro)) . "<br> Tamanho: ". strlen($publicacao->conteudo) ?> </strong></small>
+                <small> <strong> <?= "Autor da Publicação: $publicacao->autor_usuario , Em: " . date("d/m/Y h:m ", strtotime($publicacao->data_de_publicacao)) . "<br> Tamanho Conteudo: ". strlen($publicacao->conteudo) ?> </strong></small>
             </div>
             
         </div>

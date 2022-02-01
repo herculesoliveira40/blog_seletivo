@@ -5,10 +5,16 @@
 
         public function __construct() 
         {
+
             $this->db_usuario = new Conexao();
         }
 
         public function exibirUsuarios() {
+
+            if(!Sessao::estaLogado()) :
+                Url::redirecionar('usuarios/login?login_para_ver_usuarios');
+            endif; 
+
             $this->db_usuario->query("
             SELECT * FROM blog.usuarios;
              
@@ -33,6 +39,8 @@
 
         
         public function atualizar($dados) {
+
+            
             $this->db_usuario->query("UPDATE usuarios SET cpf = :cpf, nome = :nome, email = :email, senha = :senha WHERE id = :id");
 
             $this->db_usuario->bind("id", $dados['id']);

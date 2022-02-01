@@ -19,11 +19,11 @@
             </div>
             <div class="card-body">
                 <p class="card-text-justify"> <?= $dados['livro']->descricao?> </p>
-                <img src="<?=$dados['livro']->imagem?>" alt="<?=$dados['livro']->imagem?>">
+                <img src="<?=$dados['livro']->imagem?>" alt="<?=$dados['livro']->imagem?>" height="720px" width="580">
 
             </div>
             <div class="card-footer text-muted">
-                <small> <strong> <?= "Autor: " . $dados['livro']->autor . " Publicado Em: " . date("d/m/Y h:m ", strtotime($dados['livro']->data_de_publicacao)) . "<br> Tamanho: ". strlen($dados['livro']->descricao) ?> </strong></small>
+                <small> <strong> <?= "Autor: " . $dados['livro']->autor . " <br> Publicado Em: " . date("d/m/Y h:m ", strtotime($dados['livro']->data_de_publicacao)) . "<br> Quantidade de Paginas: ". ($dados['livro']->paginas) . "<br> Tamanho Descrição Letras: ". strlen($dados['livro']->descricao) ?> </strong></small>
             </div>
             <?php if ($dados['livro']->autor_usuario == $_SESSION['usuario_id']) : ?>
                 <a class="btn btn-primary" href="<?= URL.'/livros/editar/'.$dados['livro']->id?>"> Editar </a>

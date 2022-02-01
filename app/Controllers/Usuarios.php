@@ -37,11 +37,8 @@
                 var_dump($formulario); 
                 
 
-
-
                 if($this->usuarioModel->armazenar($dados)):
-                //  echo " <br> <h1> Cadastrado com sucesso </h1>";
-                    Url::redirecionar('usuarios/login?sucesso'); // header("Location:" .URL . "/usuarios/login?sucesso");
+                    Url::redirecionar('usuarios/login?sucesso'); 
                 else:
                     die("Erro ao cadastrar ");                
 
@@ -72,7 +69,6 @@
                         'email' =>trim($formulario['email']),
                         'senha' =>trim($formulario['senha']), //Senha com hash
                     ];
-                  //  var_dump($formulario); 
 
                     $verificarUsuario = $this->usuarioModel->verificarLogin($formulario['email'], $formulario['senha']);
 
@@ -112,18 +108,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
         public function editar($id) {
 
             $formulario = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
@@ -146,17 +130,22 @@
 
                     endif;                
 
-                else:
-                    $usuarios = $this->usuarioModel->UsuarioId($id);
+            else:
+                    $usuario = $this->usuarioModel->UsuarioId($id);
+                    if($usuario->id != $_SESSION['usuario_id']):
+                        Sessao::mensagem('publicacao', ' Você não é o usuario atual, então não pode editar :/ ', 'alert alert-danger'); //echo " <br> <h1> Cadastrado com sucesso </h1>";
+                        Url::redirecionar('publicacoes?nao_pode_editar');                     
+                    endif;
+
                     $dados = [
-                        'id' => $usuarios->id,
-                        'nome' => $usuarios->nome,
-                        'cpf' => $usuarios->cpf,
-                        'email' => $usuarios->email,
-                        'senha' => $usuarios->senha,
+                        'id' => $usuario->id,
+                        'nome' => $usuario->nome,
+                        'cpf' => $usuario->cpf,
+                        'email' => $usuario->email,
+                        'senha' => $usuario->senha,
                     ];
                                         
-                endif;
+            endif;
 
 
             $this->view('usuarios/editar', $dados);
@@ -177,7 +166,7 @@
                         echo "Error ao deletar";
                     endif;    
                 else:
-                    Sessao::mensagem('usuarios', ' Error Você não criou o usuarios, então pode deletar :/ ', 'alert alert-danger'); //echo " <br> <h1> Cadastrado com sucesso </h1>";
+                    Sessao::mensagem('usuarios', ' Error Você não é o usuarios atual, então não pode deletar :/ ', 'alert alert-danger'); //echo " <br> <h1> Cadastrado com sucesso </h1>";
                     Url::redirecionar('usuarios?nao_pode_apagar'); 
             endif;
         }
