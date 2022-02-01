@@ -30,6 +30,9 @@
             <a class="nav-link" href="<?=URL?>/livros">Livros</a>
             </li>
             <li class="nav-item">
+            <a class="nav-link" href="<?=URL?>/usuarios">Usuarios</a>
+            </li>
+            <li class="nav-item">
             <a class="nav-link" href="<?=URL?>/categoriaslivros">Categorias Livros</a>
             </li>
             <li class="nav-item">

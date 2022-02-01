@@ -1,15 +1,13 @@
-<?php echo " <br> <hr> Categorias" ?>
-
-<h1>Categorias  publicacoes </h1>
+<h1> Usuarios </h1>
 
 
 <div class="container">
 <?= Sessao::mensagem('usuarios'); ?> <!--  Invoca mensagemmmmmmmmmmmmmmmmmmmmmmmm -->
     <div class="card">
         <div class="card-header bg-info">
-            Categorias  publicacoes
-            <a class="btn btn-warning float-right" href="<?=URL?>/categoriaspublicacoes/cadastrar">
-                    Cadastrar Categoria  publicacoes
+            Usuarios
+            <a class="btn btn-warning float-right" href="<?=URL?>/usuarios/cadastrar">
+                    Cadastrar Usuarios
             </a>
         </div>
 <?php 
@@ -17,15 +15,25 @@
 ?>                    
         <div class="card m-5">
             <div class="card-header text-center">
-                <h3> <?= $usuario->id ?> </h3>
+                <h3> <?= $usuario->id . " - " . $usuario->nome ?> </h3>
             </div>
             <div class="card-body">
-                <p class="card-text-justify">  <?= $usuario->nome ?> </p>
-               
+                <p class="card-text-justify">  <?= $usuario->email ?> </p> 
+                <div style="display: flex;justify-content: space-around">  
+                    <a class="btn btn-success" href="<?= URL.'/usuarios/editar/'.$usuario->id?>"> Editar </a>
+                    <?php if($usuario->id == $_SESSION['usuario_id']): ?>
+                            <form action="<?= URL.'/usuarios/deletar/'.$usuario->id?>" method="POST">
+                                <input type="submit" class="btn bg-danger" value="deletar">
+                            </form>
+                    <?php endif; ?>    
+                </div>            
             </div>
+           
         </div>
+
 <?php  
     endforeach; 
 ?> 
     </div>
 </div>
+

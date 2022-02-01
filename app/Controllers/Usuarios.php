@@ -13,7 +13,7 @@
             $dados = [
                 'usuarios'=>$this->usuarioModel->exibirUsuarios(),
             ];
-            $this->view('usuarios/index', $dados);
+            $this->view('usuarios/index', $dados); 
         }
 
         
@@ -29,9 +29,7 @@
                         'confirmar_senha' =>trim($formulario['confirmar_senha']),
                     ];
 
-                    // if(empty($formulario['nome'])):
-                    //     echo 'Preencha o campo nome';
-                    // endif; 
+
                     if(($formulario['confirmar_senha']) != $formulario['senha']):
                         die('Senhas diferentes') ;
                     endif;
@@ -110,6 +108,78 @@
 
             session_destroy();
             Url::redirecionar('usuarios/login?saiu');
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        public function editar($id) {
+
+            $formulario = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            if(isset($formulario)):
+                    $dados = [
+                        'id' => $id,
+                        'cpf' =>trim($formulario['cpf']),
+                        'nome' =>trim($formulario['nome']),
+                        'email' =>trim($formulario['email']),
+                        'senha' =>trim(password_hash($formulario['senha'], PASSWORD_DEFAULT)),
+
+                    ];
+                
+                    if($this->usuarioModel->atualizar($dados)):
+                        Sessao::mensagem('usuarios', ' usuarios Atualizado com sucesso', 'alert alert-success'); //echo " <br> <h1> Cadastrado com sucesso </h1>";
+                        Url::redirecionar('usuarios?sucesso'); 
+                    else:
+                        die("Erro ao Atualizar ");                
+
+                    endif;                
+
+                else:
+                    $usuarios = $this->usuarioModel->UsuarioId($id);
+                    $dados = [
+                        'id' => $usuarios->id,
+                        'nome' => $usuarios->nome,
+                        'cpf' => $usuarios->cpf,
+                        'email' => $usuarios->email,
+                        'senha' => $usuarios->senha,
+                    ];
+                                        
+                endif;
+
+
+            $this->view('usuarios/editar', $dados);
+        }
+
+
+
+        public function deletar($id) {
+            $id = (int)$id;
+            $autor = $this->usuarioModel->usuarioId($id);
+
+            if(is_int($id) && ($autor->id == $_SESSION['usuario_id'])):  
+
+                    if($this->usuarioModel->apagar($id)):
+                        Sessao::mensagem('usuarios', ' usuarios deletado com sucesso', 'alert alert-success'); //echo " <br> <h1> Cadastrado com sucesso </h1>";
+                        Url::redirecionar('usuarios?deletado'); 
+                    else:
+                        echo "Error ao deletar";
+                    endif;    
+                else:
+                    Sessao::mensagem('usuarios', ' Error Você não criou o usuarios, então pode deletar :/ ', 'alert alert-danger'); //echo " <br> <h1> Cadastrado com sucesso </h1>";
+                    Url::redirecionar('usuarios?nao_pode_apagar'); 
+            endif;
         }
     }
 ?>
